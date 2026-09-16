@@ -55,8 +55,9 @@ catalog entry, never a live on-device measurement. Full detail in `NFCLocatorCor
   account holder's own Apple Developer Portal access and has not yet been re-verified working
   end-to-end on a real device — do not submit TapSense to App Review until that re-verification
   is done.**
-- This repository has **no commits or tags yet** — SwiftPM remote installs, CocoaPods
-  publication, and CI all need at least one commit and a pushed remote first.
+- This repository has a pushed remote but **no tagged release yet** — SwiftPM remote installs
+  and CocoaPods publication both need a tag before they'll resolve `0.1.0`. See
+  `NFCLocatorCore/README.md`'s "Versioning & releasing" section for the exact steps.
 - See [`docs/app-store/README.md`](docs/app-store/README.md) for the full App Store Connect
   submission checklist, and `NFCLocatorCore/README.md`'s "Versioning & releasing" section for
   the SwiftPM/CocoaPods publish process.

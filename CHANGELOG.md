@@ -6,6 +6,8 @@ All notable changes to this project are documented here. Format follows
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-16
+
 ### Added
 - `NFCLocatorCore`: initial Swift package — resolver chain (remote catalog → bundled seed
   catalog → generic form-factor heuristic), SwiftUI components (`AntennaLocatorScreen`,
@@ -113,7 +115,9 @@ All notable changes to this project are documented here. Format follows
   [`TapSense/DECISIONS.md`](TapSense/DECISIONS.md) for the full investigation and exact fix. This
   requires the account holder's own Apple Developer Portal access and has **not yet been
   re-verified working end-to-end on a real device — this still blocks App Store submission until
-  that re-verification is done.**
+  that re-verification is done.** This is a `TapSense` (sample app) issue only — it does not
+  affect `NFCLocatorCore`, whose full test suite passes on both the local host and iOS
+  Simulator, and does not block publishing the library to Swift Package Manager or CocoaPods.
 
-## [0.1.0] - Unreleased
-Initial internal milestone. Not yet tagged — see `README.md` for repository/versioning state.
+[Unreleased]: https://github.com/nagarjunavs/NFCLocatoriOS/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/nagarjunavs/NFCLocatoriOS/releases/tag/0.1.0
