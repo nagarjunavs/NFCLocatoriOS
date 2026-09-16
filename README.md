@@ -1,26 +1,20 @@
 # NFC Locator (iOS)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/v/NFCLocatorCore.svg)](https://cocoapods.org/pods/NFCLocatorCore)
+[![Swift Package Index](https://swiftpackageindex.com/nagarjunavs/NFCLocatoriOS/badge?type=swift-versions)](https://swiftpackageindex.com/nagarjunavs/NFCLocatoriOS)
+[![Platform compatibility](https://swiftpackageindex.com/nagarjunavs/NFCLocatoriOS/badge?type=platforms)](https://swiftpackageindex.com/nagarjunavs/NFCLocatoriOS)
 
-<!-- TODO(owner): once this repo has pushed commits and a CI run has completed, add
-     `https://github.com/nagarjunavs/NFCLocatoriOS/actions/workflows/ci.yml/badge.svg` — omitted
-     for now since a badge pointing at a repo with no history yet would just show "no status". -->
+<!-- TODO(owner): once a CI run on `master` has completed, add
+     `https://github.com/nagarjunavs/NFCLocatoriOS/actions/workflows/ci.yml/badge.svg` above. -->
 
-An on-device library that tells a user **exactly where to hold their phone** against an NFC
-reader, tag, or smart lock. Most phones' NFC antennas sit in an unlabeled spot on the back panel,
-and a scan that misses it by a centimeter just doesn't read — this shows the user where to move
-their phone before they give up.
+`NFCLocatorCore` is an on-device Swift package that tells a user **exactly where to hold their
+phone** against an NFC reader, tag, or smart lock. Most phones' NFC antennas sit in an unlabeled
+spot on the back panel, and a scan that misses it by a centimeter just doesn't read — this
+resolves and displays where to move the phone before the user gives up.
 
-This repository contains two deliverables:
-
-| Deliverable                        | Status             | What it is                                                                                                             |
-| ---------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| [`NFCLocatorCore`](NFCLocatorCore) | **Done (Phase 1)** | The publishable Swift package. No UI opinions about your app's screens — you place its components where you want them. |
-| [`TapSense`](TapSense) (iOS app)   | **Done (Phase 2)** | A complete sample app built on the package, demonstrating every screen, confidence tier, and integration seam.         |
-
-See [`NFCLocatorCore/DECISIONS.md`](NFCLocatorCore/DECISIONS.md) and
-[`TapSense/DECISIONS.md`](TapSense/DECISIONS.md) for the trade-offs made building the library and
-the sample app.
+The package also ships **TapSense**, a complete sample app that demonstrates every screen and
+integration seam the library exposes.
 
 ## Platform gap, up front
 
@@ -29,44 +23,109 @@ device — Core NFC's `NFCTagReaderSession` reads tags, never antenna geometry, 
 needed to expose one because the system already draws its own "hold near the top of iPhone" sheet
 during a scan. The resolver chain here is therefore three layers (remote catalog → bundled seed
 catalog → form-factor heuristic), and `Confidence.exact` is reachable only via a vendor-verified
-catalog entry, never a live on-device measurement. Full detail in `NFCLocatorCore/DECISIONS.md`.
+catalog entry, never a live on-device measurement. Full detail in
+[`NFCLocatorCore/DECISIONS.md`](NFCLocatorCore/DECISIONS.md).
 
-## Status
+## Getting started
 
-- **Phase 1 — `NFCLocatorCore` package: complete.** Builds and passes its full unit test suite
-  (`swift test`, 52/52 passing) both on the local macOS host and for iOS Simulator
-  (`xcodebuild -scheme NFCLocatorCore -destination 'generic/platform=iOS Simulator'`).
-- **Phase 2 — `TapSense` sample app: complete.** Every screen (onboarding, home dashboard, "My
-  Phone" antenna detail, guided tap flow, live tap test via Core NFC, phone selection/preview,
-  troubleshooting, settings, privacy) is driven end-to-end in the iOS Simulator against all four
-  confidence tiers, light and dark appearance, and a manual phone override. 44/44 app-level unit
-  tests passing. See [`TapSense/README.md`](TapSense/README.md) to build and run it.
+### Requirements
 
-## Release readiness
+- iOS 17+
+- Swift 5.10+ / Xcode 15.3+
 
-- **TapSense's live Tap Test (Core NFC) failed on at least one tested physical device** with a
-  "Missing required entitlement" (`NFCError` code 2) error. The root cause is identified — the
-  App ID's NFC Tag Reading capability was never registered on the Apple Developer Portal, a
-  known sharp edge of Automatic signing plus a generated (XcodeGen) project where declaring the
-  entitlement key in `project.yml` alone doesn't trigger that registration — and the app's own
-  error reporting was fixed so this failure mode is no longer silently misreported as a generic
-  timeout. See [`TapSense/DECISIONS.md`](TapSense/DECISIONS.md) for the full investigation and
-  the exact fix (Xcode → Signing & Capabilities → **+ Capability**). **This fix requires the
-  account holder's own Apple Developer Portal access and has not yet been re-verified working
-  end-to-end on a real device — do not submit TapSense to App Review until that re-verification
-  is done.**
-- This repository has a pushed remote but **no tagged release yet** — SwiftPM remote installs
-  and CocoaPods publication both need a tag before they'll resolve `0.1.0`. See
-  `NFCLocatorCore/README.md`'s "Versioning & releasing" section for the exact steps.
-- See [`docs/app-store/README.md`](docs/app-store/README.md) for the full App Store Connect
-  submission checklist, and `NFCLocatorCore/README.md`'s "Versioning & releasing" section for
-  the SwiftPM/CocoaPods publish process.
+### Installation
+
+**Swift Package Manager**
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/nagarjunavs/NFCLocatoriOS.git", from: "0.1.0")
+]
+```
+
+Or in Xcode: **File → Add Package Dependencies…** and paste the URL above.
+
+**CocoaPods**
+
+```ruby
+pod 'NFCLocatorCore', '~> 0.1'
+```
+
+### Usage
+
+```swift
+import NFCLocatorCore
+
+let useCase = ResolveAntennaLocationUseCase(
+    remoteAPI: MyCatalogRemoteAPI(),
+    cache: SwiftDataCatalogCache(modelContainer: myContainer),
+    seedCatalogLoader: BundledSeedCatalogLoader(logger: myLogger),
+    analytics: myAnalytics,
+    logger: myLogger
+)
+
+let profile = await useCase(signals)
+let uiState = profile.toUIState()
+```
+
+```swift
+struct MyScreen: View {
+    let state: AntennaLocatorUIState
+
+    var body: some View {
+        AntennaLocatorScreen(state: state) {
+            // re-run the flow above
+        }
+    }
+}
+```
+
+See [`NFCLocatorCore/README.md`](NFCLocatorCore/README.md) for the full API guide (setup,
+key public types, and every integration seam), and
+[`NFCLocatorCore/DECISIONS.md`](NFCLocatorCore/DECISIONS.md) for the design rationale.
+
+## Documentation
+
+Generated API documentation is available at
+[Swift Package Index](https://swiftpackageindex.com/nagarjunavs/NFCLocatoriOS/documentation/nfclocatorcore)
+once the package is indexed there. To preview it locally:
+
+```bash
+swift package add-dependency https://github.com/swiftlang/swift-docc-plugin --from 1.5.0
+swift package --disable-sandbox preview-documentation --target NFCLocatorCore
+```
+
+## Sample app
+
+**TapSense** is a complete reference integration: onboarding, a home dashboard, a "My Phone"
+antenna-detail screen, a guided tap flow, a live tap test via Core NFC, phone selection/preview,
+troubleshooting, and settings — driven end-to-end against all four confidence tiers. See
+[`TapSense/README.md`](TapSense/README.md) to build and run it.
+
+- Package test suite: `swift test`, **52/52 passing**.
+- Sample app test suite: **44/44 passing**.
+- **Known issue:** TapSense's live Tap Test (Core NFC) failed on at least one tested physical
+  device with a "Missing required entitlement" (`NFCError` code 2) error. The root cause and fix
+  are documented in [`TapSense/DECISIONS.md`](TapSense/DECISIONS.md) — it requires the account
+  holder's own Apple Developer Portal access and has not yet been re-verified end-to-end on a
+  real device. **Do not submit TapSense to App Review until that re-verification is done.** This
+  is a `TapSense` (sample app) issue only — it does not affect the published `NFCLocatorCore`
+  package.
+
+See [`docs/app-store/README.md`](docs/app-store/README.md) for the full App Store Connect
+submission checklist.
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Security issues: see [`SECURITY.md`](SECURITY.md), not
-a public issue. This project follows the [Code of Conduct](CODE_OF_CONDUCT.md). Changes are
-tracked in [`CHANGELOG.md`](CHANGELOG.md).
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the development workflow and what we're looking for.
+This project follows the [Code of Conduct](CODE_OF_CONDUCT.md). Changes are tracked in
+[`CHANGELOG.md`](CHANGELOG.md).
+
+## Support
+
+- [GitHub Issues](https://github.com/nagarjunavs/NFCLocatoriOS/issues) — bug reports, feature
+  requests, and questions.
+- Security vulnerabilities: see [`SECURITY.md`](SECURITY.md) instead of a public issue.
 
 ## License
 

@@ -63,8 +63,8 @@ dependencies: [
 ]
 ```
 
-Once this repository has a tagged release, add it as a remote dependency instead — in Xcode:
-**File → Add Package Dependencies…**, or in `Package.swift`:
+Or add it as a remote dependency — in Xcode: **File → Add Package Dependencies…**, or in
+`Package.swift`:
 
 ```swift
 dependencies: [
@@ -78,9 +78,8 @@ dependencies: [
 pod 'NFCLocatorCore', '~> 0.1'
 ```
 
-Requires [`NFCLocatorCore.podspec`](../NFCLocatorCore.podspec) at the repository root, published
-to CocoaPods Trunk — see that file and "Releasing" below for the exact steps, which are not yet
-completed (this repo has no tagged releases or CocoaPods Trunk registration yet).
+Published to CocoaPods Trunk from [`NFCLocatorCore.podspec`](../NFCLocatorCore.podspec) at the
+repository root — see "Versioning & releasing" below for how new versions are cut.
 
 ## Setup
 
@@ -171,10 +170,11 @@ To cut a release (owner action — not automated by this repo):
 
 1. Update `[Unreleased]` in `CHANGELOG.md` to the new version + date.
 2. Bump `s.version` in `NFCLocatorCore.podspec` to match.
-3. Commit, then tag: `git tag 0.1.0 && git push origin 0.1.0` (the tag **must** match the
+3. Commit, then tag: `git tag <version> && git push origin <version>` (the tag **must** match the
    podspec's `s.version` exactly — CocoaPods resolves `source_files` from that git tag).
-4. `pod trunk push NFCLocatorCore.podspec --allow-warnings` to publish to CocoaPods (requires
-   `pod trunk register` once, first time — see CocoaPods' own docs).
+4. `pod trunk push NFCLocatorCore.podspec` to publish to CocoaPods (requires `pod trunk register`
+   once, first time — see CocoaPods' own docs). No `--allow-warnings` needed; the podspec lints
+   clean.
 5. Swift Package Index picks up new tags automatically once the repository is registered there
    (see https://swiftpackageindex.com/add-a-package) — no separate publish step for SPM itself.
 
