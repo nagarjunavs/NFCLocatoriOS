@@ -23,13 +23,10 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app
       - name: swift build (debug)
-        working-directory: NFCLocatorCore
         run: swift build
       - name: swift build (release)
-        working-directory: NFCLocatorCore
         run: swift build -c release
       - name: swift test
-        working-directory: NFCLocatorCore
         run: swift test
 
   package-ios-simulator:
@@ -42,7 +39,6 @@ jobs:
       - name: List available simulators
         run: xcrun simctl list devices available
       - name: Build for iOS Simulator
-        working-directory: NFCLocatorCore
         run: |
           xcodebuild build \
             -scheme NFCLocatorCore \

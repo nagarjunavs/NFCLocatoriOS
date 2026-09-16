@@ -16,13 +16,12 @@ mistaken for a bug.
 ## Local setup
 
 ```bash
-# Package
-cd NFCLocatorCore
+# Package (Package.swift lives at the repository root)
 swift build
 swift test
 
 # Sample app
-cd ../TapSense
+cd TapSense
 brew install xcodegen   # if not already installed
 xcodegen generate
 xcodebuild -project TapSense.xcodeproj -scheme TapSense -destination 'generic/platform=iOS Simulator' build

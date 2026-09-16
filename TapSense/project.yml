@@ -7,7 +7,7 @@ options:
 
 packages:
   NFCLocatorCore:
-    path: ../NFCLocatorCore
+    path: ..
 
 targets:
   TapSense:

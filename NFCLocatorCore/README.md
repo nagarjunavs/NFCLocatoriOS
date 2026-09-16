@@ -55,11 +55,11 @@ design decisions and the reasoning behind each one.
 
 ### Swift Package Manager
 
-Local path (while developing alongside this repo, e.g. from `TapSense`):
+Local path (while developing alongside a checkout of this repo):
 
 ```swift
 dependencies: [
-    .package(path: "../NFCLocatorCore")
+    .package(path: "../NFCLocatoriOS")
 ]
 ```
 
@@ -151,6 +151,9 @@ yourself alongside your own copy/branding, drop down to its two building blocks 
 | `DeviceFingerprintProvider` | Override device identification (e.g. a phone-picker/preview screen) instead of the real running device. |
 
 ## Building & testing locally
+
+`Package.swift` lives at the repository root (not in this `NFCLocatorCore/` folder), so run these
+from there:
 
 ```bash
 swift build

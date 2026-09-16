@@ -19,13 +19,15 @@ let package = Package(
     targets: [
         .target(
             name: "NFCLocatorCore",
+            path: "NFCLocatorCore/Sources/NFCLocatorCore",
             resources: [
                 .process("Resources")
             ]
         ),
         .testTarget(
             name: "NFCLocatorCoreTests",
-            dependencies: ["NFCLocatorCore"]
+            dependencies: ["NFCLocatorCore"],
+            path: "NFCLocatorCore/Tests/NFCLocatorCoreTests"
         )
     ]
 )
