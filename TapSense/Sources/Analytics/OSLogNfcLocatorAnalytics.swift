@@ -6,16 +6,16 @@ import NFCLocatorCore
 struct OSLogNfcLocatorAnalytics: NFCLocatorAnalytics {
     private let logger = Logger(subsystem: "com.tapsense.app", category: "NfcLocatorAnalytics")
 
-    func guidanceShown(confidence: Confidence, source: DataSource, formFactor: String) {
-        logger.info("guidanceShown confidence=\(confidence.rawValue, privacy: .public) source=\(source.rawValue, privacy: .public) formFactor=\(formFactor, privacy: .public)")
+    func guidanceShown(confidence: Confidence, source: DataSource, formFactor: FormFactor) {
+        logger.info("guidanceShown confidence=\(confidence.rawValue, privacy: .public) source=\(source.rawValue, privacy: .public) formFactor=\(formFactor.rawValue, privacy: .public)")
     }
 
     func guidanceDismissed(confidence: Confidence, timeVisibleMillis: Int64) {
         logger.info("guidanceDismissed confidence=\(confidence.rawValue, privacy: .public) timeVisibleMs=\(timeVisibleMillis)")
     }
 
-    func unknownDeviceDetected(manufacturer: String, formFactorGuess: String) {
-        logger.info("unknownDeviceDetected manufacturer=\(manufacturer, privacy: .public) formFactorGuess=\(formFactorGuess, privacy: .public)")
+    func unknownDeviceDetected(manufacturer: String, formFactorGuess: FormFactor) {
+        logger.info("unknownDeviceDetected manufacturer=\(manufacturer, privacy: .public) formFactorGuess=\(formFactorGuess.rawValue, privacy: .public)")
     }
 
     func catalogMatchFound(confidence: Confidence, source: DataSource, catalogVersion: Int) {

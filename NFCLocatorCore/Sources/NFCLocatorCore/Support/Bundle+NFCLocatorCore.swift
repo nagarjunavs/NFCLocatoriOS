@@ -16,6 +16,13 @@ extension Bundle {
         #else
         let bundleName = "NFCLocatorCore"
         let candidates: [URL?] = [
+            // CocoaPods' static-framework/library integration copies the `NFCLocatorCore.bundle`
+            // resource bundle inside this compiled code's own bundle. Under `use_frameworks!`
+            // (dynamic framework), iOS frameworks are flat — this candidate resolves to the
+            // framework root with no `Resources` subdirectory, and the resource bundle actually
+            // lands beside the app instead, so this candidate falls through to the next one in
+            // that configuration; kept first because it's the one that resolves directly for the
+            // more common static integration.
             Bundle(for: ResourceBundleFinder.self).resourceURL,
             Bundle.main.resourceURL,
             Bundle(for: ResourceBundleFinder.self).bundleURL

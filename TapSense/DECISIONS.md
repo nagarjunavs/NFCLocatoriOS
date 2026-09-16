@@ -212,6 +212,37 @@ either disappear entirely (the session now activates, the real "Hold Near the To
 sheet appears) or, if something is still wrong, report a different domain/code that will point
 at whatever's next.
 
+## Same "Missing required entitlement" error recurred after the capability was added — the CLI build was the culprit this time
+Reported again after the fix above had already been applied through Xcode.app (capability added,
+confirmed present in Signing & Capabilities, signing resolved with no error shown) — same exact
+log line, `domain: NFCError, code: 2`. Per Apple's own `NFCError.h`, code 2 is
+`NFCReaderErrorSecurityViolation`, "Missing required entitlement and/or privacy settings from the
+client app" — there is only one error under this code, so a repeat means the *installed binary's*
+embedded profile still doesn't carry the entitlement, not that the portal-side registration failed
+a second time.
+
+Root cause: this project's own documented device-build command —
+`xcodebuild -project TapSense.xcodeproj -scheme TapSense -destination 'generic/platform=iOS'
+build` — never carried `-allowProvisioningUpdates`. Xcode.app's Signing & Capabilities UI resolves
+and downloads an updated provisioning profile itself, entirely independent of the command line;
+plain `xcodebuild build` from Terminal does **not** talk to the developer portal at all unless
+`-allowProvisioningUpdates` is passed — it silently reuses whatever profile is already cached on
+disk. Reproducible sequence: add the capability in Xcode.app (which downloads a fresh profile into
+Xcode's own cache and makes the *Xcode-driven* build/run succeed) → close Xcode → rebuild from
+Terminal with the exact command this README documented → xcodebuild finds a *usable* cached
+profile (the one from before the capability existed, still otherwise valid) and happily signs with
+it, producing a build that installs fine and fails at the identical `NFCError` code 2 the moment
+`NFCTagReaderSession.begin()` runs — indistinguishable from the capability never having been added
+at all, from this log line alone.
+
+**Fix**: `-allowProvisioningUpdates` (and, for a device never before registered to this account,
+`-allowProvisioningDeviceRegistration`) added to the device-build command in `README.md`, so the
+same command that builds also keeps the profile in sync going forward. Confirmed independent of
+the log line, directly: `codesign -d --entitlements :- <path-to-built-TapSense.app>` after a fresh
+build prints the actual entitlements plist baked into that specific binary —
+`com.apple.developer.nfc.readersession.formats` either is or isn't in it, which settles whether a
+stale profile is the problem *before* spending another on-device test cycle finding out.
+
 ## Building for a real device needs a Development Team — and `DEVELOPMENT_TEAM` in `project.yml`, not just Xcode's UI
 Core NFC's reader-session entitlement can only be provisioned under a paid Apple Developer
 Program membership; a free/personal Apple ID cannot get it approved at all, and building for a

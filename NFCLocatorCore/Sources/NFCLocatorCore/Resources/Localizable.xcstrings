@@ -91,17 +91,6 @@
         }
       }
     },
-    "nfc_locator.marker.exact_hint" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hold this spot against the reader."
-          }
-        }
-      }
-    },
     "nfc_locator.marker.stale_hint" : {
       "localizations" : {
         "en" : {
@@ -118,28 +107,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verified tap zone for this exact model. Hold this spot against the reader."
-          }
-        }
-      }
-    },
-    "nfc_locator.onboarding.body" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NFC Locator shows you exactly where to hold your phone against readers and smart locks — even on phones we don't recognize."
-          }
-        }
-      }
-    },
-    "nfc_locator.onboarding.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Never miss a tap again"
           }
         }
       }

@@ -27,13 +27,22 @@ final class AppEnvironment {
         let seedCatalogLoader = BundledSeedCatalogLoader(logger: logger)
         let fingerprintProvider = TapSenseDeviceFingerprintProvider()
 
+        // The cache is disposable (see `NFCLocatorCore/DECISIONS.md`), not a source of truth, so
+        // a failure to open the on-disk store (corrupt store, full disk, schema mismatch) falls
+        // back to an in-memory container rather than crashing every launch — the resolver chain
+        // still works fine with an always-empty cache, just without cross-launch persistence.
         let container: ModelContainer
         do {
             container = try SwiftDataCatalogCache.makeModelContainer()
         } catch {
-            fatalError("Failed to create SwiftData ModelContainer for antenna profile cache: \(error)")
+            logger.e(tag: "AppEnvironment", message: "Failed to open persistent ModelContainer for antenna profile cache, falling back to in-memory", error: error)
+            do {
+                container = try SwiftDataCatalogCache.makeModelContainer(inMemoryOnly: true)
+            } catch {
+                fatalError("Failed to create even an in-memory SwiftData ModelContainer: \(error)")
+            }
         }
-        let catalogCache = SwiftDataCatalogCache(modelContainer: container)
+        let catalogCache = SwiftDataCatalogCache(modelContainer: container, logger: logger)
 
         self.logger = logger
         self.analytics = analytics

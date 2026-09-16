@@ -58,13 +58,16 @@ private struct IssueRow: View {
                 Text(String(localized: issue.labelKey))
                     .tapSenseStyle(TapSenseType.bodyMedium, color: colors.onSurface)
                 Spacer()
-                Text(verbatim: "›").foregroundStyle(colors.onSurfaceVariant)
+                Text(verbatim: "›")
+                    .foregroundStyle(colors.onSurfaceVariant)
+                    .accessibilityHidden(true)
             }
             .padding(16)
             .background(isSelected ? colors.secondaryContainer : colors.surface)
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

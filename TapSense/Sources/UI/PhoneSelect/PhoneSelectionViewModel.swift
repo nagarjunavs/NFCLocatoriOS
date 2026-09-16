@@ -23,8 +23,12 @@ final class PhoneSelectionViewModel {
     private(set) var uiState = PhoneSelectionUiState()
     private var allProfiles: [DeviceAntennaProfile] = []
 
-    func load(env: AppEnvironment) async {
-        allProfiles = await env.phoneCatalogRepository.listAll()
+    /// Takes the narrower `PhoneCatalogRepository` seam rather than the full `AppEnvironment` —
+    /// this is the only dependency this view model actually needs, and it keeps
+    /// `applyFilters()`'s platform/search-combination behavior (see its own doc comment)
+    /// testable against in-memory fixtures instead of requiring a real `AppEnvironment`.
+    func load(catalogRepository: PhoneCatalogRepository) async {
+        allProfiles = await catalogRepository.listAll()
         uiState.isLoading = false
         applyFilters()
     }

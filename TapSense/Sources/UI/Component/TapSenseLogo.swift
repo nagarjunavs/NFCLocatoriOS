@@ -56,6 +56,7 @@ struct TapSenseLogo: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
         .frame(width: size, height: size)
+        .accessibilityHidden(true)
     }
 
     private func stroke(_ gc: inout GraphicsContext, center: CGPoint, radius: CGFloat, lineWidth: CGFloat) {

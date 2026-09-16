@@ -39,15 +39,22 @@ catalog entry, never a live on-device measurement. Full detail in `NFCLocatorCor
 - **Phase 2 — `TapSense` sample app: complete.** Every screen (onboarding, home dashboard, "My
   Phone" antenna detail, guided tap flow, live tap test via Core NFC, phone selection/preview,
   troubleshooting, settings, privacy) is driven end-to-end in the iOS Simulator against all four
-  confidence tiers, light and dark appearance, and a manual phone override. 31/31 app-level unit
+  confidence tiers, light and dark appearance, and a manual phone override. 44/44 app-level unit
   tests passing. See [`TapSense/README.md`](TapSense/README.md) to build and run it.
 
 ## Release readiness
 
-- **TapSense's live Tap Test (Core NFC) currently fails on at least one tested physical device**
-  with a "Missing required entitlement" error whose root cause is unresolved — see
-  [`TapSense/DECISIONS.md`](TapSense/DECISIONS.md). **Do not submit TapSense to App Review until
-  this is resolved.**
+- **TapSense's live Tap Test (Core NFC) failed on at least one tested physical device** with a
+  "Missing required entitlement" (`NFCError` code 2) error. The root cause is identified — the
+  App ID's NFC Tag Reading capability was never registered on the Apple Developer Portal, a
+  known sharp edge of Automatic signing plus a generated (XcodeGen) project where declaring the
+  entitlement key in `project.yml` alone doesn't trigger that registration — and the app's own
+  error reporting was fixed so this failure mode is no longer silently misreported as a generic
+  timeout. See [`TapSense/DECISIONS.md`](TapSense/DECISIONS.md) for the full investigation and
+  the exact fix (Xcode → Signing & Capabilities → **+ Capability**). **This fix requires the
+  account holder's own Apple Developer Portal access and has not yet been re-verified working
+  end-to-end on a real device — do not submit TapSense to App Review until that re-verification
+  is done.**
 - This repository has **no commits or tags yet** — SwiftPM remote installs, CocoaPods
   publication, and CI all need at least one commit and a pushed remote first.
 - See [`docs/app-store/README.md`](docs/app-store/README.md) for the full App Store Connect

@@ -25,6 +25,7 @@ struct NfcUnsupportedNotice: View {
                         .font(.system(size: 32))
                         .foregroundStyle(iconTint ?? colors.onSurfaceVariant)
                 )
+                .accessibilityHidden(true)
             Text(heading)
                 .tapSenseStyle(TapSenseType.titleSmall, color: headingColor ?? colors.onSurface)
                 .multilineTextAlignment(.center)

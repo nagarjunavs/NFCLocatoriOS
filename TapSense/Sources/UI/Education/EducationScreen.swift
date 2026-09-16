@@ -64,6 +64,7 @@ private struct FaqRow: View {
                     Spacer()
                     Text(verbatim: expanded ? "−" : "+")
                         .foregroundStyle(colors.onSurfaceVariant)
+                        .accessibilityHidden(true)
                 }
                 if expanded {
                     Text(String(localized: faq.answerKey))
@@ -76,5 +77,6 @@ private struct FaqRow: View {
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
         .buttonStyle(.plain)
+        .accessibilityValue(expanded ? String(localized: "education.faq_expanded") : String(localized: "education.faq_collapsed"))
     }
 }

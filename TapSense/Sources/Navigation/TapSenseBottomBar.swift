@@ -36,22 +36,34 @@ struct TapSenseBottomBar: View {
     /// far past its visible content, leaving a large band of dead surface-colored space below
     /// Home/My Phone/Settings that read as excess spacing above the home indicator (confirmed by
     /// sampling pixel rows directly: those three items' content ended around 60pt above where
-    /// the row actually stopped). Constraining the row to this height keeps the bar sized to
-    /// what's actually there — the FAB's circle still renders above this frame exactly as
-    /// before, since SwiftUI doesn't clip a child's rendering to an ancestor's frame.
+    /// the row actually stopped). Constraining the row to at least this height keeps the bar
+    /// sized to what's actually there at the standard text size — the FAB's circle still renders
+    /// above this frame exactly as before, since SwiftUI doesn't clip a child's rendering to an
+    /// ancestor's frame. A `minHeight`, not a fixed `height`: at larger Dynamic Type accessibility
+    /// sizes, Home/My Phone/Settings' label text grows past 44pt on its own, and a fixed height
+    /// would let that scaled text render past the frame into the safe area/home indicator instead
+    /// of the row growing to fit it.
     private static let itemRowHeight: CGFloat = 44
 
+    /// Each item sits in an equal-width slot (`.frame(maxWidth: .infinity)`) rather than being
+    /// separated by `Spacer()`s. `Spacer()` only fills the space *between* views, not before the
+    /// first or after the last — with 4 items and 3 in-between spacers, Home and Settings ended
+    /// up flush against the row's own edge padding while the (large) leftover width piled into
+    /// just the 3 inner gaps, reading as "Home/Settings pinned to the edges, uneven gaps between
+    /// icons" instead of symmetric spacing. Equal-width slots give every icon — including the
+    /// FAB — the same margin on both sides, matching a standard tab bar.
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             item(systemImage: "house.fill", label: String(localized: "nav.home"), selected: currentRoute == .home, action: onHomeClick)
-            Spacer()
+                .frame(maxWidth: .infinity)
             item(systemImage: "iphone", label: String(localized: "nav.my_phone"), selected: currentRoute == .myPhone, action: onMyPhoneClick)
-            Spacer()
+                .frame(maxWidth: .infinity)
             fabItem
-            Spacer()
+                .frame(maxWidth: .infinity)
             item(systemImage: "gearshape.fill", label: String(localized: "nav.settings"), selected: currentRoute == .settings, action: onSettingsClick)
+                .frame(maxWidth: .infinity)
         }
-        .frame(height: Self.itemRowHeight, alignment: .top)
+        .frame(minHeight: Self.itemRowHeight, alignment: .top)
         .padding(.horizontal, 12)
         .padding(.top, 14)
         .padding(.bottom, 10)
@@ -73,6 +85,7 @@ struct TapSenseBottomBar: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel(label)
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 
     private var fabItem: some View {

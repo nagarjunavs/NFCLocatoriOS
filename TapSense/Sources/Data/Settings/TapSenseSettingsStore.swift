@@ -15,9 +15,12 @@ final class TapSenseSettingsStore {
     private let fileURL: URL
     private let logger: NFCLocatorLogger
 
-    init(logger: NFCLocatorLogger) {
+    /// - Parameter directory: where the settings file is written. Defaults to `Application
+    ///   Support`; overridable so tests can point this at a temporary directory instead of
+    ///   touching the real one.
+    init(logger: NFCLocatorLogger, directory: URL? = nil) {
         self.logger = logger
-        let supportDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        let supportDir = directory ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
         try? FileManager.default.createDirectory(at: supportDir, withIntermediateDirectories: true)
         self.fileURL = supportDir.appendingPathComponent("tapsense_settings.json")
         self.settings = TapSenseSettingsStore.load(from: fileURL) ?? TapSenseSettings()

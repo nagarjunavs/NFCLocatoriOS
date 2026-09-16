@@ -241,5 +241,6 @@ private struct StatusIcon: View {
                     .font(.system(size: 40))
                     .foregroundStyle(tint)
             )
+            .accessibilityHidden(true)
     }
 }

@@ -15,14 +15,14 @@ public struct ConfidenceBadge: View {
     }
 
     public var body: some View {
-        Text(label)
+        Text(label, bundle: .nfcLocatorCoreResources)
             .font(.subheadline.weight(.semibold))
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
             .background(backgroundColor ?? defaultBackground)
             .foregroundStyle(foregroundColor ?? defaultForeground)
             .clipShape(Capsule())
-            .accessibilityLabel(label)
+            .accessibilityLabel(Text(label, bundle: .nfcLocatorCoreResources))
     }
 
     private var label: LocalizedStringKey {

@@ -16,9 +16,9 @@ import Foundation
 ///   hardware source.
 /// - `retryGuidanceShown` is also host-invoked, paired with ``RetryGuidanceBanner``.
 public protocol NFCLocatorAnalytics: Sendable {
-    func guidanceShown(confidence: Confidence, source: DataSource, formFactor: String)
+    func guidanceShown(confidence: Confidence, source: DataSource, formFactor: FormFactor)
     func guidanceDismissed(confidence: Confidence, timeVisibleMillis: Int64)
-    func unknownDeviceDetected(manufacturer: String, formFactorGuess: String)
+    func unknownDeviceDetected(manufacturer: String, formFactorGuess: FormFactor)
     func catalogMatchFound(confidence: Confidence, source: DataSource, catalogVersion: Int)
     func android14AntennaDetected(antennaCount: Int)
     func retryGuidanceShown(attemptNumber: Int, confidence: Confidence)

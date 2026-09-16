@@ -6,16 +6,20 @@ can complete; nothing here was submitted, approved, or published on your behalf.
 
 ## ⛔ Blocking issue — read this first
 
-**Tap Test (the live Core NFC session, `TapSense`'s headline feature) fails on at least one
-tested physical device** with `NFCError` code 2, "Missing required entitlement," despite a
-verified-correct team, explicit App ID, entitlement, provisioning profile, and device
-registration. Root cause is unresolved as of this writing — see
-[`../../TapSense/DECISIONS.md`](../../TapSense/DECISIONS.md) for the full investigation. **Do
-not submit to App Review while this is open.** Apple's reviewers test on real hardware; a
-broken core feature is close to a guaranteed rejection (Guideline 2.1, Performance — App
-Completeness), and worse, is a bad experience for real users. Escalate to Apple Developer
-Support first (only the account holder can do this — see the linked doc for exactly what to
-ask them).
+**Tap Test (the live Core NFC session, `TapSense`'s headline feature) failed on at least one
+tested physical device** with `NFCError` code 2, "Missing required entitlement." The root cause
+is now identified: the App ID's **NFC Tag Reading** capability was never registered on the Apple
+Developer Portal for the account that actually signed the installed build — declaring
+`com.apple.developer.nfc.readersession.formats` in `project.yml` puts the entitlement *key* in
+the generated `.entitlements` file, but only adding the capability through Xcode's own Signing &
+Capabilities **+ Capability** picker registers it against the App ID and refreshes the
+provisioning profile. See [`../../TapSense/DECISIONS.md`](../../TapSense/DECISIONS.md) for the
+full investigation and the exact remediation steps. **This is an `[owner]` action** — it needs
+the account holder's own Apple Developer Portal access — **and has not yet been re-verified
+working end-to-end on a real device. Do not submit to App Review until that re-verification is
+done.** Apple's reviewers test on real hardware; a broken core feature is close to a guaranteed
+rejection (Guideline 2.1, Performance — App Completeness), and worse, is a bad experience for
+real users.
 
 ## App record — [owner]
 

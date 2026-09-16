@@ -44,6 +44,7 @@ struct HomeScreen: View {
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "info.circle.fill")
                         .foregroundStyle(colors.onTertiaryContainer)
+                        .accessibilityHidden(true)
                     Text("home.tip_case", bundle: .main)
                         .tapSenseStyle(TapSenseType.bodySmall, color: colors.onTertiaryContainer)
                 }

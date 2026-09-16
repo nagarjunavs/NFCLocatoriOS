@@ -42,6 +42,7 @@ struct PhoneSilhouette: View {
                 context.fill(Path(roundedRect: notchRect, cornerRadius: notchHeight / 2), with: .color(notchColor ?? color))
             }
         }
+        .accessibilityHidden(true)
     }
 }
 
@@ -59,6 +60,7 @@ struct ReaderDeviceIllustration: View {
             let innerRadius = min(size.width, size.height) * 0.31
             context.fill(Path(ellipseIn: CGRect(x: center.x - innerRadius, y: center.y - innerRadius, width: innerRadius * 2, height: innerRadius * 2)), with: .color(innerColor))
         }
+        .accessibilityHidden(true)
     }
 }
 

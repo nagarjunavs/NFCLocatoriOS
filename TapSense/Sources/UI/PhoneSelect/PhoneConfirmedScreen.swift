@@ -19,6 +19,7 @@ struct PhoneConfirmedScreen: View {
                         .font(.system(size: 36))
                         .foregroundStyle(colors.onPrimaryContainer)
                 )
+                .accessibilityHidden(true)
 
             Text("phone_confirmed.title", bundle: .main)
                 .tapSenseStyle(TapSenseType.headlineSmall, color: colors.onSurface)

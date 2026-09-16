@@ -211,12 +211,14 @@ private struct SideToggle: View {
             Text(label)
                 .tapSenseStyle(TapSenseType.titleSmall, color: isSelected ? colors.onSurface : colors.onSurfaceVariant)
                 .padding(.horizontal, 20)
-                .padding(.vertical, 8)
+                .frame(minHeight: 44)
                 .background(isSelected ? selectedTabColor : Color.clear)
                 .clipShape(RoundedRectangle(cornerRadius: 11))
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .padding(2)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

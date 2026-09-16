@@ -87,6 +87,28 @@
         }
       }
     },
+    "education.faq_collapsed" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapsed"
+          }
+        }
+      }
+    },
+    "education.faq_expanded" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expanded"
+          }
+        }
+      }
+    },
     "education.faq_pay_vs_scan" : {
       "extractionState" : "stale",
       "localizations" : {

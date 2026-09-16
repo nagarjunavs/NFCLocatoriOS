@@ -36,7 +36,8 @@ physical device *and* a correctly signed build, or it won't work at all:
 export DEVELOPMENT_TEAM=<your Apple Developer Team ID>   # Signing & Capabilities → Team, or
                                                             # find it at developer.apple.com/account
 xcodegen generate
-xcodebuild -project TapSense.xcodeproj -scheme TapSense -destination 'generic/platform=iOS' build
+xcodebuild -project TapSense.xcodeproj -scheme TapSense -destination 'generic/platform=iOS' build \
+  -allowProvisioningUpdates -allowProvisioningDeviceRegistration
 ```
 
 Set `DEVELOPMENT_TEAM` before running `xcodegen generate` rather than picking a team through
@@ -44,6 +45,25 @@ Xcode's own Signing & Capabilities UI — `xcodegen generate` rewrites the whole
 `project.yml` on every run, which silently discards a team selected only in the UI. Without a
 team at all, building for a device fails immediately with "Signing for 'TapSense' requires a
 development team," before the build even reaches Core NFC.
+
+**`-allowProvisioningUpdates` is not optional** for this command, and its absence is a
+previously-confirmed cause of Tap Test failing with the exact same "Missing required entitlement"
+error even *after* correctly adding the NFC capability in Xcode's Signing & Capabilities UI: that
+UI talks to the developer portal and refreshes the provisioning profile on its own, but a plain
+`xcodebuild build` invoked from Terminal does not — it silently reuses whatever profile is already
+cached on disk, which may predate the capability. See `DECISIONS.md`'s "Same 'Missing required
+entitlement' error recurred after the capability was added" for the full account. After any build,
+you can confirm what's actually embedded without touching a device at all:
+
+```bash
+codesign -d --entitlements :- \
+  ~/Library/Developer/Xcode/DerivedData/TapSense-*/Build/Products/Debug-iphoneos/TapSense.app
+```
+
+Look for `com.apple.developer.nfc.readersession.formats` in the output. If it's missing, the
+build itself — not the device, not the developer portal — is the problem: delete the cached
+profile at `~/Library/Developer/Xcode/UserData/Provisioning Profiles/` and rebuild with
+`-allowProvisioningUpdates` again.
 
 If Tap Test reaches **"Couldn't start the NFC reader"** immediately, with no system "Hold Near
 the Top of iPhone" sheet ever appearing, check the device's own console log first — connect the
@@ -60,12 +80,28 @@ the developer-portal/Xcode-UI side, not in this project's code or config:
    entitlement key — adding it through this picker is what actually registers the capability
    against the App ID on the developer portal and regenerates the profile. Declaring the raw
    entitlement key via `project.yml`/XcodeGen alone does not reliably trigger that registration.
-3. Let Xcode finish resolving signing, then delete the app from the device and reinstall (a
-   profile cached from before the capability existed won't self-refresh).
-4. Still failing? Confirm **NFC Tag Reading** is checked for `com.tapsense.app` directly at
-   developer.apple.com/account → Certificates, Identifiers & Profiles → Identifiers, and if
-   Xcode still won't pick it up, delete the cached profile at `~/Library/Developer/Xcode/UserData/Provisioning Profiles/`
-   to force a fresh download.
+3. Confirm at developer.apple.com/account → Certificates, Identifiers & Profiles → Identifiers
+   that `com.tapsense.app` is registered as its own **explicit** App ID (not matched by a wildcard
+   like `com.tapsense.*`) with **NFC Tag Reading** checked — Apple does not allow the NFC
+   entitlement on a wildcard App ID at all, and Xcode's "+ Capability" step can silently no-op
+   against one instead of erroring.
+4. Confirm Xcode → Settings → Accounts is signed in with the **same Apple ID** that actually owns
+   this App ID's registration — signing/building with a different Apple ID's automatic-signing
+   session creates or reuses an entirely different profile that never sees the capability you just
+   added (this exact mismatch is what caused an earlier false "provisioning is fine" conclusion in
+   `DECISIONS.md`).
+5. Let Xcode finish resolving signing (watch for the signing-error banner to clear), then either
+   run from Xcode.app directly (`Cmd+R`) or rebuild from Terminal with
+   `-allowProvisioningUpdates` — **a plain `xcodebuild build` without that flag reuses whatever
+   profile is already cached and will not pick up the change**, reproducing the identical error
+   even after steps 1–4 are all done correctly. See the `-allowProvisioningUpdates` note above.
+6. Before touching the device again, verify directly: `codesign -d --entitlements :-` on the
+   freshly built `.app` (command above) must show
+   `com.apple.developer.nfc.readersession.formats`. If it doesn't, the build/profile is still the
+   problem — delete `~/Library/Developer/Xcode/UserData/Provisioning Profiles/` and rebuild.
+7. Fully delete the app from the device (long-press → Remove App, not just reinstalling over it)
+   before the next install — a stale installed binary's own embedded profile doesn't get replaced
+   by installing on top of it in every case.
 
 See [`DECISIONS.md`](DECISIONS.md) for the full investigation, what each logged branch means, and
 why an earlier "provisioning is fine" conclusion in that log turned out to be wrong (it verified
@@ -97,12 +133,15 @@ Tap Guide FAB / Settings).
 
 ## Testing
 
-31 unit tests cover `Router`'s navigation-stack logic, `TapTestViewModel`'s Core-NFC-adjacent
+44 unit tests cover `Router`'s navigation-stack logic, `TapTestViewModel`'s Core-NFC-adjacent
 state machine — including session-end handling, the activated-vs-never-activated distinction
 that separates a genuine `.timedOut` from `.readerUnavailable`, and retry (via a fake
 `TapReaderModeStarting`, since real Core NFC session behavior can only be exercised on a
-device) — and the `DisplayNames` friendly-name mapping, including the real-device regression
-covered in `DECISIONS.md` (a raw `hw.machine` string and its already-normalized form must both
+device) — `TapSenseSettingsStore`'s JSON persistence and backup-exclusion (against a temp
+directory, not the real `Application Support`), `PhoneSelectionViewModel`'s platform-filter/search
+combination logic (against in-memory catalog fixtures), and the `DisplayNames` friendly-name
+mapping, including the real-device regression covered in `DECISIONS.md` (a raw `hw.machine`
+string and its already-normalized form must both
 resolve to the same marketing name).
 
 ## License

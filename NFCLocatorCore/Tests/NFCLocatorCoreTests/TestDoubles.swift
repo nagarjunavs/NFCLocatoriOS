@@ -33,13 +33,13 @@ final class CallCountingSource: AntennaLocationSource, @unchecked Sendable {
 final class RecordingAnalytics: NFCLocatorAnalytics, @unchecked Sendable {
     private(set) var events: [String] = []
 
-    func guidanceShown(confidence: Confidence, source: DataSource, formFactor: String) {
+    func guidanceShown(confidence: Confidence, source: DataSource, formFactor: FormFactor) {
         events.append("guidanceShown(\(confidence),\(source),\(formFactor))")
     }
     func guidanceDismissed(confidence: Confidence, timeVisibleMillis: Int64) {
         events.append("guidanceDismissed")
     }
-    func unknownDeviceDetected(manufacturer: String, formFactorGuess: String) {
+    func unknownDeviceDetected(manufacturer: String, formFactorGuess: FormFactor) {
         events.append("unknownDeviceDetected(\(manufacturer),\(formFactorGuess))")
     }
     func catalogMatchFound(confidence: Confidence, source: DataSource, catalogVersion: Int) {

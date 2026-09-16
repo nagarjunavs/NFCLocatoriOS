@@ -24,6 +24,7 @@ struct PhoneSelectionScreen: View {
             HStack(spacing: 8) {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(colors.onSurfaceVariant)
+                    .accessibilityHidden(true)
                 TextField(String(localized: "phone_selection.search_placeholder"), text: Binding(
                     get: { viewModel.uiState.query },
                     set: { viewModel.onQueryChange($0) }
@@ -84,7 +85,7 @@ struct PhoneSelectionScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(colors.background)
         .task {
-            if let env { await viewModel.load(env: env) }
+            if let env { await viewModel.load(catalogRepository: env.phoneCatalogRepository) }
         }
     }
 }

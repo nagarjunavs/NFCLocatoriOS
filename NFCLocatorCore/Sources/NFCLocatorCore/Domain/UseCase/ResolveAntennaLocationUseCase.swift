@@ -71,12 +71,12 @@ public struct ResolveAntennaLocationUseCase: Sendable {
     }
 
     private func reportResolution(_ profile: DeviceAntennaProfile) {
-        analytics.guidanceShown(confidence: profile.confidence, source: profile.source, formFactor: profile.formFactor.rawValue)
+        analytics.guidanceShown(confidence: profile.confidence, source: profile.source, formFactor: profile.formFactor)
         switch profile.source {
         case .remoteCatalog, .seedCatalog:
             analytics.catalogMatchFound(confidence: profile.confidence, source: profile.source, catalogVersion: profile.catalogVersion)
         case .heuristic:
-            analytics.unknownDeviceDetected(manufacturer: profile.manufacturer, formFactorGuess: profile.formFactor.rawValue)
+            analytics.unknownDeviceDetected(manufacturer: profile.manufacturer, formFactorGuess: profile.formFactor)
         }
     }
 }

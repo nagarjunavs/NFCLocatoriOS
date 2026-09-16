@@ -21,11 +21,13 @@ struct SettingsScreen: View {
                 } trailing: {
                     Text(verbatim: "\(phoneLabel)  ›")
                         .tapSenseStyle(TapSenseType.bodyMedium, color: colors.onSurfaceVariant)
+                        .accessibilityHidden(true)
                 }
+                .accessibilityValue(phoneLabel)
                 Divider().background(colors.outlineVariant)
 
                 SettingsRow(label: String(localized: "settings.haptics"), onClick: nil) {
-                    Toggle("", isOn: Binding(
+                    Toggle(String(localized: "settings.haptics"), isOn: Binding(
                         get: { settings.hapticsEnabled },
                         set: { env?.settingsStore.setHapticsEnabled($0) }
                     ))
@@ -35,7 +37,7 @@ struct SettingsScreen: View {
                 Divider().background(colors.outlineVariant)
 
                 SettingsRow(label: String(localized: "settings.reduce_motion"), onClick: nil) {
-                    Toggle("", isOn: Binding(
+                    Toggle(String(localized: "settings.reduce_motion"), isOn: Binding(
                         get: { settings.reduceMotion },
                         set: { env?.settingsStore.setReduceMotion($0) }
                     ))
@@ -59,14 +61,18 @@ struct SettingsScreen: View {
                 SettingsRow(label: String(localized: "settings.help_center")) {
                     router.push(.troubleshoot)
                 } trailing: {
-                    Text(verbatim: "›").tapSenseStyle(TapSenseType.bodyMedium, color: colors.onSurfaceVariant)
+                    Text(verbatim: "›")
+                        .tapSenseStyle(TapSenseType.bodyMedium, color: colors.onSurfaceVariant)
+                        .accessibilityHidden(true)
                 }
                 Divider().background(colors.outlineVariant)
 
                 SettingsRow(label: String(localized: "settings.privacy")) {
                     router.push(.privacy)
                 } trailing: {
-                    Text(verbatim: "›").tapSenseStyle(TapSenseType.bodyMedium, color: colors.onSurfaceVariant)
+                    Text(verbatim: "›")
+                        .tapSenseStyle(TapSenseType.bodyMedium, color: colors.onSurfaceVariant)
+                        .accessibilityHidden(true)
                 }
 
                 Text(L10n("settings.version", appVersionString))
@@ -102,6 +108,7 @@ struct SettingsScreen: View {
                 .clipShape(Capsule())
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 }
 
