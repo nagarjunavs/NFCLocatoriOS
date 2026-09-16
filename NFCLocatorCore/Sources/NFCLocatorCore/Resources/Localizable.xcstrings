@@ -1,0 +1,259 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "nfc_locator.confidence.approximate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approximate location"
+          }
+        }
+      }
+    },
+    "nfc_locator.confidence.exact" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exact location"
+          }
+        }
+      }
+    },
+    "nfc_locator.confidence.generic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated area"
+          }
+        }
+      }
+    },
+    "nfc_locator.confidence.unknown" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown device"
+          }
+        }
+      }
+    },
+    "nfc_locator.error.body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong while looking up your device. You can still try the general guidance below."
+          }
+        }
+      }
+    },
+    "nfc_locator.error.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't determine antenna location"
+          }
+        }
+      }
+    },
+    "nfc_locator.loading.content_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looking up your device's NFC antenna location"
+          }
+        }
+      }
+    },
+    "nfc_locator.marker.approximate_hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold roughly this spot against the reader. Move slightly if it doesn't read."
+          }
+        }
+      }
+    },
+    "nfc_locator.marker.content_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFC antenna location marker"
+          }
+        }
+      }
+    },
+    "nfc_locator.marker.exact_hint" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold this spot against the reader."
+          }
+        }
+      }
+    },
+    "nfc_locator.marker.stale_hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This location hasn't been verified recently. If it doesn't work, try the sweep below."
+          }
+        }
+      }
+    },
+    "nfc_locator.marker.verified_hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verified tap zone for this exact model. Hold this spot against the reader."
+          }
+        }
+      }
+    },
+    "nfc_locator.onboarding.body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFC Locator shows you exactly where to hold your phone against readers and smart locks — even on phones we don't recognize."
+          }
+        }
+      }
+    },
+    "nfc_locator.onboarding.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never miss a tap again"
+          }
+        }
+      }
+    },
+    "nfc_locator.retry_button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        }
+      }
+    },
+    "nfc_locator.retry_guidance.body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reader didn't detect your phone. Try moving it slightly, or follow the sweep guidance below."
+          }
+        }
+      }
+    },
+    "nfc_locator.retry_guidance.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reposition and try again"
+          }
+        }
+      }
+    },
+    "nfc_locator.screen.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find your NFC antenna"
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.bar_tip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try the upper-back area of your phone, near the camera."
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.content_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guided sweep animation showing where to move your phone"
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.fold_book_tip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try the back of your phone, roughly centered when folded, or on one inner half when unfolded."
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.fold_flip_tip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try the center-back of your phone, near the hinge."
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.generic_tip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We don't have an exact match for your phone. Slowly move the marked area of your phone across the reader."
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.tablet_tip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try the center-back of your tablet."
+          }
+        }
+      }
+    },
+    "nfc_locator.sweep.unknown_tip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most phones have their NFC antenna near the upper back, close to the camera. Try that spot first, then slowly sweep the back of the phone across the reader."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

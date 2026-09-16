@@ -1,0 +1,109 @@
+name: CI
+
+# Verification only — nothing in this workflow publishes anywhere. Release/publish steps
+# (CocoaPods Trunk, tagging) are documented as manual owner actions in NFCLocatorCore/README.md
+# and are deliberately not automated here.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    name: NFCLocatorCore (SwiftPM)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: swift build (debug)
+        working-directory: NFCLocatorCore
+        run: swift build
+      - name: swift build (release)
+        working-directory: NFCLocatorCore
+        run: swift build -c release
+      - name: swift test
+        working-directory: NFCLocatorCore
+        run: swift test
+
+  package-ios-simulator:
+    name: NFCLocatorCore (iOS Simulator via xcodebuild)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: List available simulators
+        run: xcrun simctl list devices available
+      - name: Build for iOS Simulator
+        working-directory: NFCLocatorCore
+        run: |
+          xcodebuild build \
+            -scheme NFCLocatorCore \
+            -destination 'generic/platform=iOS Simulator' \
+            -skipMacroValidation
+
+  sample-app:
+    name: TapSense (sample app)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        working-directory: TapSense
+        run: xcodegen generate
+      - name: Resolve an available simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available iOS -j \
+            | python3 -c "import json,sys; data=json.load(sys.stdin)['devices']; \
+              devices=[d for runtime in data.values() for d in runtime if 'iPhone' in d['name']]; \
+              print(devices[0]['udid'] if devices else '')")
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+      - name: Build (Debug, Simulator)
+        if: steps.sim.outputs.udid != ''
+        working-directory: TapSense
+        run: |
+          xcodebuild build \
+            -project TapSense.xcodeproj -scheme TapSense -configuration Debug \
+            -destination "id=${{ steps.sim.outputs.udid }}"
+      - name: Unit tests (Simulator)
+        if: steps.sim.outputs.udid != ''
+        working-directory: TapSense
+        run: |
+          xcodebuild test \
+            -project TapSense.xcodeproj -scheme TapSense \
+            -destination "id=${{ steps.sim.outputs.udid }}"
+      - name: Build (Release, device architecture, unsigned)
+        working-directory: TapSense
+        run: |
+          xcodebuild build \
+            -project TapSense.xcodeproj -scheme TapSense -configuration Release \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO
+        # No Apple Developer Team is configured in CI — this validates the Release configuration
+        # compiles and links for the device architecture, not a signed, submittable archive.
+        # A real archive requires DEVELOPMENT_TEAM + a signing identity; see TapSense/README.md.
+
+  podspec-lint:
+    name: NFCLocatorCore.podspec (pod lib lint)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: pod lib lint
+        run: |
+          export LANG=en_US.UTF-8
+          # --allow-warnings: the podspec's homepage/source URLs are placeholders until this
+          # repo has a real remote (see NFCLocatorCore.podspec) — remove once they're real.
+          pod lib lint NFCLocatorCore.podspec --allow-warnings

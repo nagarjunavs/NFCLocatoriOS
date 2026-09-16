@@ -1,0 +1,1428 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "app.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapSense"
+          }
+        }
+      }
+    },
+    "app.tagline" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Know exactly where to tap"
+          }
+        }
+      }
+    },
+    "confidence_chip.approximate" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "APPROXIMATE"
+          }
+        }
+      }
+    },
+    "confidence_chip.estimated" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ESTIMATED"
+          }
+        }
+      }
+    },
+    "confidence_chip.exact" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EXACT"
+          }
+        }
+      }
+    },
+    "confidence_chip.unknown" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UNKNOWN"
+          }
+        }
+      }
+    },
+    "education.faq_antenna_location" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Where is the antenna on my phone?"
+          }
+        }
+      }
+    },
+    "education.faq_antenna_location_answer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usually near the upper back, close to the main camera — TapSense shows the exact spot for your model on the My Phone screen."
+          }
+        }
+      }
+    },
+    "education.faq_pay_vs_scan" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap-to-pay vs. tag scanning"
+          }
+        }
+      }
+    },
+    "education.faq_pay_vs_scan_answer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap-to-pay talks to a secure payment terminal; tag scanning reads a small passive chip. Both use the same antenna and tap zone."
+          }
+        }
+      }
+    },
+    "education.faq_tap_tag" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I tap an NFC tag?"
+          }
+        }
+      }
+    },
+    "education.faq_tap_tag_answer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold your phone's tap zone directly against the tag and keep it steady for a second or two."
+          }
+        }
+      }
+    },
+    "education.faq_why_fail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why a tap can fail"
+          }
+        }
+      }
+    },
+    "education.faq_why_fail_answer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thick cases, magnetic accessories, low battery, or simply missing the tap zone are the most common causes."
+          }
+        }
+      }
+    },
+    "education.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFC basics"
+          }
+        }
+      }
+    },
+    "education.what_is_nfc_body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFC works only at very close range — a few centimeters. Placing your phone's tap area directly against the device and holding it still gives the most reliable read."
+          }
+        }
+      }
+    },
+    "education.what_is_nfc_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is NFC?"
+          }
+        }
+      }
+    },
+    "home.change_phone" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change"
+          }
+        }
+      }
+    },
+    "home.greeting_afternoon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good afternoon"
+          }
+        }
+      }
+    },
+    "home.greeting_evening" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good evening"
+          }
+        }
+      }
+    },
+    "home.greeting_morning" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning"
+          }
+        }
+      }
+    },
+    "home.nfc_unsupported" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device has no NFC hardware"
+          }
+        }
+      }
+    },
+    "home.nfc_unsupported_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device doesn't have NFC hardware, so there's no tap zone to show."
+          }
+        }
+      }
+    },
+    "home.previewing_label" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previewing tap zone for"
+          }
+        }
+      }
+    },
+    "home.start_tap_guide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start tap guide"
+          }
+        }
+      }
+    },
+    "home.tap_area_estimated" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated tap area shown above"
+          }
+        }
+      }
+    },
+    "home.tap_area_recommended" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommended tap area shown above"
+          }
+        }
+      }
+    },
+    "home.tap_not_working" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap not working?"
+          }
+        }
+      }
+    },
+    "home.tip_case" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold the highlighted area against the reader for 1–2 seconds. Thick cases can weaken the signal."
+          }
+        }
+      }
+    },
+    "my_phone.case_warning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thick cases, magnetic wallets, and metal plates may reduce NFC performance."
+          }
+        }
+      }
+    },
+    "my_phone.front_banner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most phones place their NFC antenna on the rear panel, near the top or camera area."
+          }
+        }
+      }
+    },
+    "my_phone.front_body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The NFC antenna isn't on the front of this phone. Switch to Back to see the recommended tap zone."
+          }
+        }
+      }
+    },
+    "my_phone.nfc_unsupported_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device doesn't have NFC hardware, so there's no tap zone to show."
+          }
+        }
+      }
+    },
+    "my_phone.not_applicable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOT APPLICABLE"
+          }
+        }
+      }
+    },
+    "my_phone.orientation_back_contact" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back-to-reader contact"
+          }
+        }
+      }
+    },
+    "my_phone.orientation_header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientation"
+          }
+        }
+      }
+    },
+    "my_phone.tab_back" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "my_phone.tab_front" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Front"
+          }
+        }
+      }
+    },
+    "my_phone.test_location" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test this location"
+          }
+        }
+      }
+    },
+    "my_phone.view_back_placement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View back placement"
+          }
+        }
+      }
+    },
+    "my_phone.zone_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFC antenna / recommended contact zone. Tap this area directly against the reader or tag."
+          }
+        }
+      }
+    },
+    "nav.home" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
+    },
+    "nav.my_phone" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Phone"
+          }
+        }
+      }
+    },
+    "nav.settings" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "nav.tap_guide" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Guide"
+          }
+        }
+      }
+    },
+    "onboarding.continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
+    "onboarding.get_started" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started"
+          }
+        }
+      }
+    },
+    "onboarding.page1_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See exactly where to place your phone for reliable NFC scanning — no guesswork."
+          }
+        }
+      }
+    },
+    "onboarding.page1_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find your phone's tap point"
+          }
+        }
+      }
+    },
+    "onboarding.page2_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simple visual guidance for tags, smart locks, readers, and payment terminals."
+          }
+        }
+      }
+    },
+    "onboarding.page2_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap with confidence"
+          }
+        }
+      }
+    },
+    "onboarding.page3_body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapSense already recognized this device. Continue to see its tap zone, or choose a different phone to preview."
+          }
+        }
+      }
+    },
+    "onboarding.page3_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get guidance built for your phone"
+          }
+        }
+      }
+    },
+    "onboarding.skip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
+    },
+    "phone_confirmed.choose_different" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a different phone"
+          }
+        }
+      }
+    },
+    "phone_confirmed.go_home" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Home"
+          }
+        }
+      }
+    },
+    "phone_confirmed.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're set"
+          }
+        }
+      }
+    },
+    "phone_selection.empty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No phones match \"%@\"."
+          }
+        }
+      }
+    },
+    "phone_selection.filter_android" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android"
+          }
+        }
+      }
+    },
+    "phone_selection.filter_apple" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple"
+          }
+        }
+      }
+    },
+    "phone_selection.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading catalog…"
+          }
+        }
+      }
+    },
+    "phone_selection.search_placeholder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search brand or model"
+          }
+        }
+      }
+    },
+    "phone_selection.section_header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Known phones"
+          }
+        }
+      }
+    },
+    "phone_selection.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What phone do you want to preview?"
+          }
+        }
+      }
+    },
+    "phone_selection.use_my_phone" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use my phone automatically"
+          }
+        }
+      }
+    },
+    "privacy.analytics_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapSense logs a small number of app-usage events locally, to this device's own log output only. Nothing is transmitted off-device."
+          }
+        }
+      }
+    },
+    "privacy.analytics_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analytics"
+          }
+        }
+      }
+    },
+    "privacy.catalog_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your exact phone model isn't already bundled with the app, it may look it up against a remote catalog of known antenna locations. That request includes only your device's manufacturer and model name - nothing else identifying you or your device."
+          }
+        }
+      }
+    },
+    "privacy.catalog_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone catalog lookups"
+          }
+        }
+      }
+    },
+    "privacy.disclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This page explains what data TapSense collects, why, and how it's handled."
+          }
+        }
+      }
+    },
+    "privacy.on_device_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finding your phone's antenna location happens entirely on-device, using iOS's own Core NFC APIs. Nothing about when or where you tap is recorded or sent anywhere."
+          }
+        }
+      }
+    },
+    "privacy.on_device_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On-device NFC detection"
+          }
+        }
+      }
+    },
+    "privacy.permissions_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapSense requests NFC access only to read tags during a tap test. It does not request location, contacts, camera, microphone, or storage access."
+          }
+        }
+      }
+    },
+    "privacy.permissions_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permissions"
+          }
+        }
+      }
+    },
+    "privacy.retention_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapSense doesn't create an account or store personal data on any server. Your selected phone model and app preferences are saved only on your device and are removed automatically when you uninstall the app."
+          }
+        }
+      }
+    },
+    "privacy.retention_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data retention"
+          }
+        }
+      }
+    },
+    "privacy.third_party_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapSense does not include any third-party analytics, advertising, or tracking SDKs."
+          }
+        }
+      }
+    },
+    "privacy.third_party_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Third-party services"
+          }
+        }
+      }
+    },
+    "privacy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & data"
+          }
+        }
+      }
+    },
+    "settings.appearance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "settings.appearance_dark" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "settings.appearance_light" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "settings.appearance_system" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
+    "settings.haptics" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptic feedback"
+          }
+        }
+      }
+    },
+    "settings.help_center" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help center"
+          }
+        }
+      }
+    },
+    "settings.phone_auto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-detected"
+          }
+        }
+      }
+    },
+    "settings.phone_model" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone model"
+          }
+        }
+      }
+    },
+    "settings.privacy" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & data"
+          }
+        }
+      }
+    },
+    "settings.reduce_motion" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduce motion"
+          }
+        }
+      }
+    },
+    "settings.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "settings.version" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        }
+      }
+    },
+    "tap_guide.close_content_description" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close tap guide"
+          }
+        }
+      }
+    },
+    "tap_guide.next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "tap_guide.step_of" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %lld of %lld"
+          }
+        }
+      }
+    },
+    "tap_guide.step1_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is the area highlighted on your Home and My Phone screens."
+          }
+        }
+      }
+    },
+    "tap_guide.step1_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locate your tap zone"
+          }
+        }
+      }
+    },
+    "tap_guide.step2_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bring your phone within a few centimeters — most readers wake automatically."
+          }
+        }
+      }
+    },
+    "tap_guide.step2_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake the reader"
+          }
+        }
+      }
+    },
+    "tap_guide.step3_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep contact steady for 1–2 seconds. Wait for a vibration or sound to confirm the tap."
+          }
+        }
+      }
+    },
+    "tap_guide.step3_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold the highlighted area against the reader"
+          }
+        }
+      }
+    },
+    "tap_guide.step4_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most readers beep, flash, or vibrate your phone when the tap succeeds."
+          }
+        }
+      }
+    },
+    "tap_guide.step4_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wait for confirmation"
+          }
+        }
+      }
+    },
+    "tap_guide.step5_action" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run a tap test"
+          }
+        }
+      }
+    },
+    "tap_guide.step5_body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run a tap test now to confirm your tap zone works with a real NFC tag or reader."
+          }
+        }
+      }
+    },
+    "tap_guide.step5_title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try it for real"
+          }
+        }
+      }
+    },
+    "tap_test.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "tap_test.hint_detected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your recommended tap area is working."
+          }
+        }
+      }
+    },
+    "tap_test.hint_detecting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold the highlighted area against an NFC tag or reader"
+          }
+        }
+      }
+    },
+    "tap_test.hint_nfc_unsupported" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device doesn't have NFC hardware, so a live tap test isn't possible here."
+          }
+        }
+      }
+    },
+    "tap_test.hint_reader_unavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reader session didn't start. This can happen if NFC isn't available for this build, or the phone was moved away before it could begin. Try again."
+          }
+        }
+      }
+    },
+    "tap_test.hint_timed_out" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Move slowly across the reader\n• Try the top or rear of the phone\n• Remove thick cases or magnets"
+          }
+        }
+      }
+    },
+    "tap_test.state_detected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFC detected successfully"
+          }
+        }
+      }
+    },
+    "tap_test.state_detecting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detecting…"
+          }
+        }
+      }
+    },
+    "tap_test.state_nfc_unsupported" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device has no NFC hardware"
+          }
+        }
+      }
+    },
+    "tap_test.state_reader_unavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't start the NFC reader"
+          }
+        }
+      }
+    },
+    "tap_test.state_timed_out" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No NFC signal detected yet"
+          }
+        }
+      }
+    },
+    "tap_test.tap_again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap again"
+          }
+        }
+      }
+    },
+    "tap_test.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap test"
+          }
+        }
+      }
+    },
+    "tap_test.try_again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        }
+      }
+    },
+    "tap_test.view_tips" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View tap tips"
+          }
+        }
+      }
+    },
+    "taptest.reader_alert" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold your phone's tap zone near the tag or reader."
+          }
+        }
+      }
+    },
+    "troubleshoot.action_choose_phone" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose my phone"
+          }
+        }
+      }
+    },
+    "troubleshoot.action_learn_more" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn NFC basics"
+          }
+        }
+      }
+    },
+    "troubleshoot.action_run_tap_test" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run a tap test"
+          }
+        }
+      }
+    },
+    "troubleshoot.action_view_tap_zone" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View my tap zone"
+          }
+        }
+      }
+    },
+    "troubleshoot.issue_cannot_scan" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I can't scan a tag"
+          }
+        }
+      }
+    },
+    "troubleshoot.issue_dont_know_where" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I don't know where to tap"
+          }
+        }
+      }
+    },
+    "troubleshoot.issue_model_missing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My phone model isn't listed"
+          }
+        }
+      }
+    },
+    "troubleshoot.issue_no_reaction" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My phone does not react"
+          }
+        }
+      }
+    },
+    "troubleshoot.issue_pay_failing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap-to-pay is not working"
+          }
+        }
+      }
+    },
+    "troubleshoot.issue_reader_silent" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reader does not respond"
+          }
+        }
+      }
+    },
+    "troubleshoot.selected_prefix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected:"
+          }
+        }
+      }
+    },
+    "troubleshoot.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's happening?"
+          }
+        }
+      }
+    },
+    "troubleshoot.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap not working?"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

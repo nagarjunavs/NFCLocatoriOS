@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # No third-party Swift package dependencies exist today (NFCLocatorCore.podspec and
+  # Package.swift are both dependency-free by design) — this entry activates automatically if
+  # any are ever added.
+  - package-ecosystem: "swift"
+    directory: "/NFCLocatorCore"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

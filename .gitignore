@@ -1,0 +1,33 @@
+.DS_Store
+.build/
+.swiftpm/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+.index-build/
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# XcodeGen-generated — project.yml is the source of truth; run `xcodegen generate` to recreate.
+TapSense/TapSense.xcodeproj/
+TapSense/Generated/
+TapSense/build_sim/
+TapSense/build/
+*.xcarchive/
+*.ipa
+
+# Local signing material and secrets — never commit these regardless of where they end up.
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+*.env
+.env
+.env.*
+ExportOptions.plist
